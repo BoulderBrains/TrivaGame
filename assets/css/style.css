@@ -1,0 +1,15 @@
+.body-container {
+	display: block;
+	width: 75%;
+	border: 2px solid black;
+    border-radius: 5px;
+	margin: 5% auto;
+}
+
+h3 {
+	margin: 6% 0% 20% 0;
+}
+
+#startButton {
+	margin-bottom: 10%;
+}
