@@ -36,7 +36,7 @@ var questions = [
     	answer: "True"
     },
     {
-    	question: "Blue is a better than Red",
+    	question: "Blue is a better than Red.",
 		options: ["True", "False"],
     	answer: "True"
     },
@@ -108,13 +108,13 @@ var game = {
 
 		// for each question append the concatanated html object to the page
 		for (var i = 0; i < questions.length; i++) {
-			$("#question-page").append('<h2>' + questions[i].question + '</h2>');
+			$("#question-page").append("<h2 class='question'>" + questions[i].question + "</h2>");
 			
 			// for each option to the questions append an input for the user to choose
 			// I passed through i as the name of the input radio, so use could only select one
 			// option out of the two presented
 			for (var j = 0; j < questions[i].options.length; j++){
-			$("#question-page").append("<input type='radio' name='" + i + "' id='question" + i + "' value='" + questions[i].options[j] + "'>","<label>" + questions[i].options[j] + "</label>");
+			$("#question-page").append("<span class='answer'>" + "<input type='radio' name='" + i + "' id='question" + i + "' value='" + questions[i].options[j] + "'>" + "<label>" + questions[i].options[j] + "</label>" + "</span>");
 			}
 		}
 

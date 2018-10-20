@@ -16,7 +16,10 @@
 
 	<!-- bootstrap stylesheet include -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
+	crossorigin="anonymous">
+
+	<!-- Google font include -->
+	<link href="https://fonts.googleapis.com/css?family=Chakra+Petch:300,500" rel="stylesheet">
 
 	<!-- stylesheet include -->
 	<link rel="stylesheet" href="assets/css/style.css">
@@ -25,15 +28,15 @@
 </head>
 
 <body class="text-center">
-	<h1>Fact or Fiction Trivia</h1>
+	<div id="title">Fact or Fiction</div>
 	<div id="instructions">
 		<h3>20 seconds</h3>
-		<h4>10 questions</h4>
-		<h2>Good Luck!</h2>
+		<h3>10 questions</h4>
+		<h1>Good Luck!</h1>
 	</div>
 		<button id="start-button" class="btn btn-lg btn-primary">Trivia start!</button>
 		<div class="question-wrapper">
-			<div id="timer">Time left <span id="time">20</span><div id="time-value"> seconds</div></div>
+			<div id="timer">Time left <div id="time">20</div><div id="time-value"> seconds</div></div>
 			<div id="question-page" class="panel"></div>
 		</div>
 		<div id="results" class="panel">
