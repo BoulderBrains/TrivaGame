@@ -1,5 +1,8 @@
 # Fact or Fiction Trivia Game
-Github pages link:  https://boulderbrains.github.io/TriviaGame/
+### Github pages link:  https://boulderbrains.github.io/TriviaGame/
+
+###### 20 seconds, 10 questions
+
 
 # JavaScript Assignment 2
 
