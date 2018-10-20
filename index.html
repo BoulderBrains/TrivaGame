@@ -24,19 +24,28 @@
 	<title>Trivia Game</title>
 </head>
 
-<body>
-	<div class="body-container text-center"></div>
-	<div id="timer">
-		<!-- This will be a timer counting down from 30 seconds -->
-	</div>
-	<form id="trivaQuestions">
-		<ul>
-			<!-- This will be 10 true/false questions -->
-		</ul>
-	</form>
+<body class="text-center">
+	<h1>True or False Trivia</h1>
+	<h3>20 seconds, 10 questions, Good Luck!</h3>
+		<div id="start-screen" class="panel">
+			<button class="btn btn-primary">Trivia start!</button>
+		</div>
+		<div class="question-wrapper">
+			<div id="timer">Time Left: <span id="show-timer">20</span> Seconds</div>
+			<div id="question-page" class="panel"></div>
+		</div>
+		<div id="results" class="panel">
+			<h2 id="lead"> Here's how you did!</h2>
+			<p class="results-p"> Incomplete Questions: <span id="unanswered-tally"></span></p>
+			<p class="results-p"> Correct Answers: <span id="correct-tally"></span></p>
+			<p class="results-p"> Incorrect Answers: <span id="wrong-tally"></span></p>
+			<h3>Think you can do better?</h3>
+			<button id="reset">Try again</button>
 
-	<!-- My JS file include -->
-	<script src="assets/javascript/app.js"></script>
+		</div>
+
+		<!-- My JS file include -->
+		<script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

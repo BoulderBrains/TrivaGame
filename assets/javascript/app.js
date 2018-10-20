@@ -1,20 +1,148 @@
-// create countdown timer that counts down from 30seconds
-// create if statements around counter running out
-// create an object that holds questions and answers
-// Create win/lose variables
-// create correct/incorrect variables
+// creating empty var for the timer
+var timer;
 
-$(document).ready(function() {
-	//When the page is ready, trigger the startScreen
-	function startWindow() {
-		startWindow = "<h3>Ready for a Trivia challenge?</h3><a class='btn btn-primary' id='startButton' href='#'>Start</a>";
-		$(".body-container").html(startWindow);
-	}
+// On click the the #start-screen element, run the game start function on the object
+$("#start-screen").on("click", function() {
+	game.start();
+});
 
-	startWindow();
+// On click of the submit button, run the game results function on the object
+$("#question-page").on("click", "#submit", function() {
+	game.results();
+});
 
-	// On click of the start-button, run the following code
-	$("body").on("click", "#startButton", function(event){
+// On click of the reset button, reload the page
+$("#results").on("click", "#reset", function() {
+	game.reset();
+});
 
-	});
-})
+// These lines hide the question wrapper and results on page load
+// we don't want these displayed until after user starts or finishes quiz
+$(".question-wrapper").hide();
+$("#results").hide();
+
+// Setting up a questions variable that's and arrary of objects containing question, options and answers
+var questions = [
+		{
+    	question: "The sky is blue due to the oceans algae.",
+    	options: ["True", "False"],
+    	answer: "False"
+    },
+    {
+    	question: "You should go to the hospital if you're having trouble breathing.",
+    	options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "When you smell bad you should shower.",
+		options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "Without a hat, your head with sometimes get cold.",
+		options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "When your hungry you should brush your teeth.",
+    	options: ["True", "False"],
+    	answer: "False"
+    },
+    {
+    	question: "We didn't start the fire.",
+    	options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "Boston Mass. is the best city around.",
+    	options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "Blue is a better color than Red",
+		options: ["True", "False"],
+    	answer: "True"
+    },
+    {
+    	question: "When you grow up you can be whatever you want.",
+		options: ["True", "False"],
+		answer: "False"
+    },
+    {
+    	question: "When you smell smoke, there is usually fire.",
+		options: ["True", "False"],
+    	answer: "True"
+    },
+];
+
+var game = {
+	// setting variables to zero to be added to as user goes through quiz
+	correct: 0,
+	incorrect: 0,
+	unanswered: 0,
+	counter: 20,
+	
+	countdown: function() {
+		// decreases the counter
+		game.counter--;
+		// displays the new updated time on page
+		$("#show-timer").text(game.counter);
+		// if the counter reaches 0 show the user their results
+		if (game.counter === 0) {
+			game.results();
+		};
+	},
+	start: function() {
+		// hides the start button and wrapper
+		$("#start-screen").hide();
+
+		// show the dynamically created questions
+		$(".question-wrapper").show();
+
+		// creating timer triggering a countdown every second
+		timer = setInterval(game.countdown, 1000);
+
+		// for each question append the concatanated html object to the page
+		for (var i = 0; i < questions.length; i++) {
+			$("#question-page").append('<h2>' + questions[i].question + '</h2>');
+			
+			// for each option to the questions append an input for the user to choose
+			for (var j = 0; j < questions[i].options.length; j++){
+			$("#question-page").append("<input type='radio' id='question" + i + "' value='" + questions[i].options[j] + "'>","<label>" + questions[i].options[j] + "</label>");
+			}
+		}
+
+		// now adding a sumbit button at the end of the form
+		$("#question-page").append("<br><button type='button' class='btn btn-primary' id='submit'>Submit</button>");
+	},
+
+	// function computing the results
+	results: function() {
+		for (var x = 0; x < questions.length; x++) {
+			if (!$("input[id='question" + x + "']").is(":checked")) {
+				game.unanswered++
+			}
+			else {
+				if ($("input[id='question" + x + "']:checked").val() === questions[x].answer) {
+					game.correct++
+				} else {
+					game.incorrect++
+				}
+			}
+		}
+		game.completed();
+	},
+	reset: function() {
+		location.reload();
+	},
+	completed: function() {
+		clearInterval(timer);
+		$("#timer").hide();
+		$("#question-page").hide();
+		$(".question-wrapper").hide();
+		$("#results").show();
+		$("#correct-tally").text(game.correct);
+		$("#wrong-tally").text(game.incorrect);
+		$("#unanswered-tally").text(game.unanswered);
+	},
+};
