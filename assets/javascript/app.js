@@ -1,27 +1,4 @@
-// creating empty var for the timer
-var timer;
-
-// On click the the #start-screen element, run the game start function on the object
-$("#start-screen").on("click", function() {
-	game.start();
-});
-
-// On click of the submit button, run the game results function on the object
-$("#question-page").on("click", "#submit", function() {
-	game.results();
-});
-
-// On click of the reset button, reload the page
-$("#results").on("click", "#reset", function() {
-	game.reset();
-});
-
-// These lines hide the question wrapper and results on page load
-// we don't want these displayed until after user starts or finishes quiz
-$(".question-wrapper").hide();
-$("#results").hide();
-
-// Setting up a questions variable that's and arrary of objects containing question, options and answers
+// Setting up a questions variable that's an arrary of objects containing question, options and answers
 var questions = [
 		{
     	question: "The sky is blue due to the oceans algae.",
@@ -75,6 +52,30 @@ var questions = [
     },
 ];
 
+// creating empty var for the timer
+var timer;
+
+// On click the the #start-screen element, run the game start function on the object
+$("#start-screen").on("click", function() {
+	game.start();
+});
+
+// On click of the submit button, run the game results function on the object
+$("#question-page").on("click", "#submit", function() {
+	game.results();
+});
+
+// On click of the reset button, reload the page
+$("#results").on("click", "#reset", function() {
+	game.reset();
+});
+
+// These lines hide the question wrapper and results on page load
+// we don't want these displayed until after user starts or finishes quiz
+$(".question-wrapper").hide();
+$("#results").hide();
+
+
 var game = {
 	// setting variables to zero to be added to as user goes through quiz
 	correct: 0,
@@ -107,8 +108,10 @@ var game = {
 			$("#question-page").append('<h2>' + questions[i].question + '</h2>');
 			
 			// for each option to the questions append an input for the user to choose
+			// I passed through i as the name of the input radio, so use could only select one
+			// option out of the two presented
 			for (var j = 0; j < questions[i].options.length; j++){
-			$("#question-page").append("<input type='radio' id='question" + i + "' value='" + questions[i].options[j] + "'>","<label>" + questions[i].options[j] + "</label>");
+			$("#question-page").append("<input type='radio' name='" + i + "' id='question" + i + "' value='" + questions[i].options[j] + "'>","<label>" + questions[i].options[j] + "</label>");
 			}
 		}
 
@@ -132,15 +135,27 @@ var game = {
 		}
 		game.completed();
 	},
+
+	// reset function that reloads the page
 	reset: function() {
 		location.reload();
 	},
+
+	// Completed function
 	completed: function() {
+		// Stops the timer
 		clearInterval(timer);
+
+		// hides the timer
 		$("#timer").hide();
-		$("#question-page").hide();
+
+		// hides the questions displayed to user
 		$(".question-wrapper").hide();
+
+		// show the results div
 		$("#results").show();
+
+		// Complete the calculations of correct, incorrect and unanswered questions
 		$("#correct-tally").text(game.correct);
 		$("#wrong-tally").text(game.incorrect);
 		$("#unanswered-tally").text(game.unanswered);
