@@ -94,6 +94,9 @@ var game = {
 		};
 	},
 	start: function() {
+		// hides simple instructions
+		$("#instructions").hide();
+
 		// hides the start button and wrapper
 		$("#start-button").hide();
 
