@@ -16,12 +16,12 @@ var questions = [
     	answer: "True"
     },
     {
-    	question: "Without a hat, your head with sometimes get cold.",
+    	question: "Without a hat, your head will sometimes get cold.",
 		options: ["True", "False"],
     	answer: "True"
     },
     {
-    	question: "When your hungry you should brush your teeth.",
+    	question: "When you're hungry you should brush your teeth.",
     	options: ["True", "False"],
     	answer: "False"
     },
@@ -36,7 +36,7 @@ var questions = [
     	answer: "True"
     },
     {
-    	question: "Blue is a better color than Red",
+    	question: "Blue is a better than Red",
 		options: ["True", "False"],
     	answer: "True"
     },
@@ -87,7 +87,7 @@ var game = {
 		// decreases the counter
 		game.counter--;
 		// displays the new updated time on page
-		$("#show-timer").text(game.counter);
+		$("#time").text(game.counter);
 		// if the counter reaches 0 show the user their results
 		if (game.counter === 0) {
 			game.results();
