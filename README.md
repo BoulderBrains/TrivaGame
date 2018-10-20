@@ -1,5 +1,5 @@
-# TrivaGame
-github pages link:  https://boulderbrains.github.io/TriviaGame/
+# Fact or Fiction Trivia Game
+Github pages link:  https://boulderbrains.github.io/TriviaGame/
 
 # JavaScript Assignment 2
 
