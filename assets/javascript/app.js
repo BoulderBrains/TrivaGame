@@ -55,8 +55,8 @@ var questions = [
 // creating empty var for the timer
 var timer;
 
-// On click the the #start-screen element, run the game start function on the object
-$("#start-screen").on("click", function() {
+// On click the the #start-button element, run the game start function on the object
+$("#start-button").on("click", function() {
 	game.start();
 });
 
@@ -95,7 +95,7 @@ var game = {
 	},
 	start: function() {
 		// hides the start button and wrapper
-		$("#start-screen").hide();
+		$("#start-button").hide();
 
 		// show the dynamically created questions
 		$(".question-wrapper").show();
