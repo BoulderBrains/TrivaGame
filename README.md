@@ -1,6 +1,6 @@
 # Fact or Fiction Trivia Game
 
-* You've got 20 seconds and 10 questions, good luck!
+## You've got 20 seconds and 10 questions, good luck!
 
 ### Github pages link:  https://boulderbrains.github.io/TriviaGame/
 
