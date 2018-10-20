@@ -53,6 +53,9 @@ body {
 }
 
 .answer label {
-	margin: 5px;
 	font-size: 20px;
+}
+
+.answer input {
+	margin-right: 5px;
 }

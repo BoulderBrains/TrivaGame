@@ -114,7 +114,7 @@ var game = {
 			// I passed through i as the name of the input radio, so use could only select one
 			// option out of the two presented
 			for (var j = 0; j < questions[i].options.length; j++){
-			$("#question-page").append("<span class='answer'>" + "<input type='radio' name='" + i + "' id='question" + i + "' value='" + questions[i].options[j] + "'>" + "<label>" + questions[i].options[j] + "</label>" + "</span>");
+			$("#question-page").append("<span class='answer'>" + "<label>" + "<input type='radio' name='" + i + "' id='question" + i + "' value='" + questions[i].options[j] + "'>" + questions[i].options[j] + "</label>" + "</span>");
 			}
 		}
 
